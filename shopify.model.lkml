@@ -1,4 +1,4 @@
-connection: "shopify_data"
+connection: "panoply"
 
 # include all the views #
 include: "*.view"

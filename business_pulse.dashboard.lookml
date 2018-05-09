@@ -120,8 +120,7 @@
     fill_fields:
     - orders.created_date
     filters:
-      products.product_type: "%Sneakers%,%Apparel%,%Choozepack%,%Sandals%,%Loafers%,%Slip-Ons%"
-      orders.created_year: '2016'
+      orders.created_year: '2018'
     sorts:
     - orders__line_items.count desc 0
     - products.product_type
@@ -303,7 +302,7 @@
     dynamic_fields:
     - table_calculation: calculation_1
       label: Calculation 1
-      expression: '20000'
+      expression: '70000'
       value_format:
       value_format_name: decimal_0
       _kind_hint: dimension
@@ -404,6 +403,8 @@
     fields:
     - customers.orders_count
     - customers.count
+    filters:
+      customers.orders_count: not 0
     sorts:
     - customers.orders_count
     limit: 5

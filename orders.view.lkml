@@ -1,5 +1,5 @@
 view: orders {
-  sql_table_name: shopify.orders ;;
+  sql_table_name: public.shopify_orders ;;
 
   dimension: id {
     primary_key: yes
@@ -9,7 +9,7 @@ view: orders {
 
   dimension: customer_id {
     type: number
-    sql: ${TABLE}.customer__id ;;
+    sql: ${TABLE}.email ;;
   }
 
   dimension: refunded_flag {
@@ -733,17 +733,17 @@ view: orders {
 
 view: customer_order_facts {
   derived_table: {
-#     sql_trigger_value: SELECT CURRENT_DATE ;;
-#     sortkeys: [customer_id]
-#     distribution: "customer_id"
+    sql_trigger_value: SELECT CURRENT_DATE ;;
+    sortkeys: ["customer_id"]
+    distribution: "customer_id"
     sql: SELECT
-           customer__id as customer_id
+            email as customer_id
           , COUNT(*) as lifetime_orders
           , SUM(total_price_usd) as lifetime_revenue
           , MAX(created_at) as latest_order_created
           , MIN(created_at) as first_order_created
           , COUNT(DISTINCT DATE_TRUNC('month', created_at)) AS number_of_distinct_months_with_orders
-         FROM shopify.orders
+         FROM public.shopify_orders
          GROUP BY customer_id
 
  ;;

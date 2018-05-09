@@ -1,17 +1,17 @@
 view: customers {
-  sql_table_name: shopify.customers ;;
+  sql_table_name: public.shopify_customers ;;
 
   dimension: id {
     primary_key: yes
     hidden: yes
     type: number
-    sql: ${TABLE}.id ;;
+    sql: ${TABLE}.email ;;
   }
 
   dimension: _id {
     type: number
     hidden: yes
-    sql: ${TABLE}._id ;;
+    sql: ${TABLE}.email ;;
   }
 
 
@@ -235,13 +235,10 @@ view: customers {
   set: detail {
     fields: [
       id,
-      country,
       first_name,
       last_name,
       last_order_name,
-      city,
-      total_spent,
-      email
+      total_spent
     ]
   }
 }
