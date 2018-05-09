@@ -8,6 +8,29 @@ view: customers {
     sql: ${TABLE}.email ;;
   }
 
+  dimension: tags {
+    type: string
+    sql: ${TABLE}.tags ;;
+  }
+
+  dimension: Active_Boxer_Subscribers {
+   type: yesno
+   sql: (${TABLE}.tags like '%Active Subscriber, BoxerSubscriptionMember%' or ${TABLE}.tags like '%Active Subscriber, boxersub_canceled, BoxerSubscriptionMember%')
+        and ${TABLE}.email not like '%shinesty.com%' and ${TABLE}.email not like 'chriswhite918@gmail.com';;
+  }
+
+  dimension: Active_HTC_CM {
+    type: yesno
+    sql: ${TABLE}.tags like '%HTCMember-CM%'
+      and ${TABLE}.email not like '%shinesty.com%' and ${TABLE}.email not like 'chriswhite918@gmail.com' and  ${TABLE}.email not like 'jon.hallett@hallettcapital.com';;
+  }
+
+  dimension: Active_HTC_1P {
+    type: yesno
+    sql: ${TABLE}.tags like '%HTCMember%' and ${TABLE}.tags not like '%HTCMember-CM%'
+      and ${TABLE}.email not like '%shinesty.com%' and ${TABLE}.email not like 'chriswhite918@gmail.com' and  ${TABLE}.email not like 'jon.hallett@hallettcapital.com';;
+  }
+
   dimension: _id {
     type: number
     hidden: yes
