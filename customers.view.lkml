@@ -1,11 +1,11 @@
 view: customers {
-  sql_table_name: public.shopify_customers ;;
+  sql_table_name: shopify.shopify_customers ;;
 
   dimension: id {
     primary_key: yes
     hidden: yes
     type: number
-    sql: ${TABLE}.email ;;
+    sql: ${TABLE}.id ;;
   }
 
   dimension: tags {
@@ -34,7 +34,7 @@ view: customers {
   dimension: _id {
     type: number
     hidden: yes
-    sql: ${TABLE}.email ;;
+    sql: ${TABLE}.id ;;
   }
 
 

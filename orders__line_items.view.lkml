@@ -1,5 +1,5 @@
 view: orders__line_items {
-  sql_table_name: public.shopify_orders_line_items ;;
+  sql_table_name: shopify.shopify_order_line ;;
 
   dimension: id {
     primary_key: yes
@@ -48,7 +48,7 @@ view: orders__line_items {
 #renamed key _sdc_source_key_id to order_id
   dimension: order_id {
     type: number
-    sql: ${TABLE}.shopify_orders_id ;;
+    sql: ${TABLE}.order_id ;;
   }
   measure: first_purchase_count {
     view_label: "Orders"
