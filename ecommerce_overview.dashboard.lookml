@@ -273,7 +273,7 @@
     - orders.order_number
     - orders.shipping_city
     - orders.shipping_country
-    - orders.total_price_usd
+    - orders.total_price
     - orders.total_weight
     - orders.total_order_revenue
     - orders.created_date

@@ -1,5 +1,5 @@
 view: customers {
-  sql_table_name: shopify.shopify_customers ;;
+  sql_table_name: shopify.customer ;;
 
   dimension: id {
     primary_key: yes

@@ -1,5 +1,5 @@
 view: orders__line_items {
-  sql_table_name: shopify.shopify_order_line ;;
+  sql_table_name: shopify.order_line ;;
 
   dimension: id {
     primary_key: yes

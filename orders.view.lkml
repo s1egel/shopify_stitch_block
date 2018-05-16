@@ -589,17 +589,17 @@ view: orders {
 
   dimension: shipping_address__latitude {
     type: number
-    sql: ${TABLE}.shipping_address__latitude ;;
+    sql: ${TABLE}.shipping_address_latitude ;;
   }
 
   dimension: shipping_address__longitude {
     type: number
-    sql: ${TABLE}.shipping_address__longitude ;;
+    sql: ${TABLE}.shipping_address_longitude ;;
   }
   dimension:  shipping_location {
     type: location
-    sql_latitude: round(cast(${shipping_address__latitude} as int),3)  ;;
-    sql_longitude: round(cast(${shipping_address__longitude} as int),3) ;;
+    sql_latitude: ${shipping_address__latitude}  ;;
+    sql_longitude: ${shipping_address__longitude} ;;
   }
 
   dimension: shipping_address__name {
@@ -717,7 +717,7 @@ view: orders {
   }
   measure: total_order_revenue {
     type: sum
-    sql: ${total_price_usd} ;;
+    sql: ${total_price} ;;
     value_format_name:largeamount
     drill_fields: [detail*]
   }
